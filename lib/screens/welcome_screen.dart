@@ -1,72 +1,104 @@
+import 'package:flutter/animation.dart';
 import 'package:flutter/material.dart';
+import 'package:messcenger/screens/login_screen.dart';
+import 'package:messcenger/screens/registration_screen.dart';
 
 class WelcomeScreen extends StatefulWidget {
-  static String id = 'Welcome_Screen';
+  static const String id = 'Welcome_Screen';
 
   @override
   _WelcomeScreenState createState() => _WelcomeScreenState();
+
 }
 
-class _WelcomeScreenState extends State<WelcomeScreen> {
+class _WelcomeScreenState extends  State<WelcomeScreen> with SingleTickerProviderStateMixin {
+
+  late AnimationController controller;
+
+  @override
+  void initState() {
+
+    super.initState();
+    controller = AnimationController(
+      duration: Duration(seconds: 1),
+      vsync: this,
+    );
+
+  }
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+
       body: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 24.0),
+        padding: const EdgeInsets.symmetric(horizontal: 24.0),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
             Row(
               children: <Widget>[
-                Container(
-                  child: Image.asset('images/logo.png'),
-                  height: 60.0,
-                ),
-                Text(
-                  'Flash Chat',
-                  style: TextStyle(
-                    fontSize: 45.0,
-                    fontWeight: FontWeight.w900,
+                Hero(
+                  tag: 'logo',
+                  child: Center(
+                    widthFactor: 1.9,
+                    child: Container(
+                      child: Image.asset('images/chat.png'),
+                      height: 200.0,
+                      width: 200.0,
+                      alignment: Alignment.center,
+
+                    ),
                   ),
                 ),
+                // const Text(
+                //   'CHAT',
+                //   style:   TextStyle(
+                //     color: Colors.black54,
+                //     fontSize: 20.0,
+                //     fontWeight: FontWeight.w900,
+                //   ),
+                // ),
               ],
             ),
-            SizedBox(
+            const SizedBox(
               height: 48.0,
             ),
             Padding(
-              padding: EdgeInsets.symmetric(vertical: 16.0),
+              padding: const EdgeInsets.symmetric(vertical: 16.0),
               child: Material(
-                elevation: 5.0,
-                color: Colors.lightBlueAccent,
-                borderRadius: BorderRadius.circular(30.0),
+                elevation: 20.0,
+                color: Colors.black54,
+                borderRadius: BorderRadius.circular(20.0),
                 child: MaterialButton(
+
                   onPressed: () {
-                    //Go to login screen.
+                    Navigator.pushNamed(context, LoginScreen.id);
                   },
                   minWidth: 200.0,
-                  height: 42.0,
-                  child: Text(
+                  height: 60.0,
+
+
+                  child: const Text(
                     'Log In',
                   ),
                 ),
               ),
             ),
             Padding(
-              padding: EdgeInsets.symmetric(vertical: 16.0),
+              padding: const EdgeInsets.symmetric(vertical: 20.0),
               child: Material(
-                color: Colors.blueAccent,
-                borderRadius: BorderRadius.circular(30.0),
-                elevation: 5.0,
+                color: Colors.blueGrey,
+                borderRadius: BorderRadius.circular(20.0),
+                elevation: 20.0,
                 child: MaterialButton(
                   onPressed: () {
-                    //Go to registration screen.
+                    Navigator.pushNamed(context, RegistrationScreen.id);
                   },
-                  minWidth: 200.0,
-                  height: 42.0,
-                  child: Text(
+                  minWidth: 100.0,
+                  height: 60.0,
+                  child: const Text(
                     'Register',
                   ),
                 ),
@@ -77,4 +109,6 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
       ),
     );
   }
-}
+
+  }
+

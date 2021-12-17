@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:messcenger/constants.dart';
 
 class ChatScreen extends StatefulWidget {
+
+  static const String id = 'Chat_Screen';
   @override
   _ChatScreenState createState() => _ChatScreenState();
 }
@@ -11,6 +13,7 @@ class _ChatScreenState extends State<ChatScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+
         leading: null,
         actions: <Widget>[
           IconButton(
@@ -19,11 +22,12 @@ class _ChatScreenState extends State<ChatScreen> {
                 //Implement logout functionality
               }),
         ],
-        title: Text('⚡️Chat'),
-        backgroundColor: Colors.lightBlueAccent,
+        title: const Text('SEND MESSAGES'),
+        backgroundColor: Colors.black,
       ),
       body: SafeArea(
         child: Column(
+
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
@@ -44,7 +48,7 @@ class _ChatScreenState extends State<ChatScreen> {
                     onPressed: () {
                       //Implement send functionality.
                     },
-                    child: Text(
+                    child: const Text(
                       'Send',
                       style: kSendButtonTextStyle,
                     ),

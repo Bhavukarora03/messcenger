@@ -10,17 +10,23 @@ class Messcenger extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+
+
       debugShowCheckedModeBanner: false,
       theme: ThemeData.dark().copyWith(
-        textTheme: TextTheme(),
+        canvasColor: Colors.black54,
+        scaffoldBackgroundColor: Colors.blueGrey,
+
+
       ),
       home: WelcomeScreen(),
+
       initialRoute: WelcomeScreen.id,
       routes: {
         WelcomeScreen.id: (context) => WelcomeScreen(),
-        'Second_Screen': (context) => LoginScreen(),
-        'Third_Screen': (context) => RegistrationScreen(),
-        'Fourth_Screen': (context) => ChatScreen()
+        LoginScreen.id: (context) => LoginScreen(),
+        RegistrationScreen.id: (context) => RegistrationScreen(),
+        ChatScreen.id : (context) => ChatScreen()
       },
     );
   }
